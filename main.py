@@ -58,12 +58,12 @@ Podaj dokladnosc: """))
 def calculations(function_number, epsilon):
     print()
     print()
-    print("Wartosc dla metody Newtona-Cotesa:", calculate_limit_of_function(function_number, epsilon))
+    print("Wartosc dla metody Newtona-Cotesa:", round(calculate_limit_of_function(function_number, epsilon), 6))
     print()
 
     for i in range(2, 6):
         print("Liczba wezlow:", i)
-        print("Wartosc dla metody Gaussa-Czebyszewa:", calculate_integral(function_number, i))
+        print("Wartosc dla metody Gaussa-Czebyszewa:", round(calculate_integral(function_number, i), 6))
         print()
 
 

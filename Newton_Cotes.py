@@ -52,10 +52,6 @@ def calculate_integral(function_number, left_border, right_border, epsilon):
         result += 4 * calculate_function_and_weight_product(left_border + ((2 * i - 1) * length), function_number)
         result += 2 * calculate_function_and_weight_product(left_border + ((2 * i) * length), function_number)
         i += 1
-    #
-    # for i in range(1, int(subrange / 2)):
-    #     result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
-    #     result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
 
     result *= length / 3
 
@@ -72,10 +68,6 @@ def calculate_integral(function_number, left_border, right_border, epsilon):
             result += 4 * calculate_function_and_weight_product(left_border + ((2 * i - 1) * length), function_number)
             result += 2 * calculate_function_and_weight_product(left_border + ((2 * i) * length), function_number)
             i += 1
-        #
-        # for i in range(1, int(subrange / 2)):
-        #     result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
-        #     result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
 
         result *= length / 3
 

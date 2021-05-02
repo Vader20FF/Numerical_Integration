@@ -1,7 +1,8 @@
 from sys import exit as exitProgram
 from function_value import get_function_value
 from horner import get_polynomial_value
-from Newton_Cotes import *
+from Newton_Cotes import calculate_limit_of_function
+from Gauss import calculate_integral
 import numpy as np
 import sympy as sp
 
@@ -44,18 +45,26 @@ Wybór: """))
             if function_number in [1, 2, 3, 4]:
                 valid_number = True
 
-    epsilon = int(input("""
+    epsilon = float(input("""
 Podaj dokladnosc: """))
     while epsilon < 0:
         print("Podaj dokladnosc wieksza od 0!")
-        epsilon = int(input("""
+        epsilon = float(input("""
 Podaj dokladnosc: """))
 
     calculations(function_number, epsilon)
 
 
 def calculations(function_number, epsilon):
-    pass
+    print()
+    print()
+    print("Wartosc dla metody Newtona-Cotesa:", calculate_limit_of_function(function_number, epsilon))
+    print()
+
+    for i in range(2, 6):
+        print("Liczba wezlow:", i)
+        print("Wartosc dla metody Gaussa-Czebyszewa:", calculate_integral(function_number, i))
+        print()
 
 
 ##########################################################################

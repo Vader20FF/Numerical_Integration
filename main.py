@@ -41,7 +41,7 @@ Wybór: """))
         valid_number = False
         while not valid_number:
             function_number = int(input("""
-                Wybierz jeszcze raz numer funkcji: """))
+Wybierz jeszcze raz numer funkcji: """))
             if function_number in [1, 2, 3, 4]:
                 valid_number = True
 

@@ -11,13 +11,13 @@ def calculate_limit_of_function(function_number, epsilon):
     temp = calculate_integral(function_number, left_border, right_border, epsilon)
     result += temp
     left_border = right_border
-    right_border += (1 - right_border) / 2
+    right_border += (1 - right_border) * 1 / 2
 
     while abs(temp) > epsilon:
         temp = calculate_integral(function_number, left_border, right_border, epsilon)
         result += temp
         left_border = right_border
-        right_border += (1 - right_border) / 2
+        right_border += (1 - right_border) * 1 / 2
 
     # function_limit to -1
     left_border, right_border = -0.5, 0
@@ -25,42 +25,58 @@ def calculate_limit_of_function(function_number, epsilon):
     temp = calculate_integral(function_number, left_border, right_border, epsilon)
     result += temp
     right_border = left_border
-    left_border += (1 - abs(right_border)) / 2
+    left_border += (1 - abs(right_border)) * 1 / 2
 
     while abs(temp) > epsilon:
         temp = calculate_integral(function_number, left_border, right_border, epsilon)
         result += temp
         right_border = left_border
-        left_border += (1 - abs(right_border)) / 2
+        left_border -= (1 - abs(right_border)) * 1 / 2
 
     return result
 
 
 def calculate_integral(function_number, left_border, right_border, epsilon):
     delta = right_border - left_border
-    subrange, result, temp = 1, 0, ...
+    subrange, result, temp = 1, 0, 0
 
-    subrange = subrange * 2
+    subrange *= 2
     length = delta / subrange
     temp = result
     result = 0
     result += calculate_function_and_weight_product(left_border, function_number) + \
               calculate_function_and_weight_product(right_border, function_number)
-    for i in range(int(subrange / 2)):
-        result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
-        result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
+
+    i = 1
+    while i < subrange / 2:
+        result += 4 * calculate_function_and_weight_product(left_border + ((2 * i - 1) * length), function_number)
+        result += 2 * calculate_function_and_weight_product(left_border + ((2 * i) * length), function_number)
+        i += 1
+    #
+    # for i in range(1, int(subrange / 2)):
+    #     result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
+    #     result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
+
     result *= length / 3
 
     while abs(temp - result) > epsilon:
-        subrange = subrange * 2
+        subrange *= 2
         length = delta / subrange
         temp = result
         result = 0
         result += calculate_function_and_weight_product(left_border, function_number) + \
                   calculate_function_and_weight_product(right_border, function_number)
-        for i in range(int(subrange / 2)):
-            result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
-            result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
+
+        i = 1
+        while i < subrange / 2:
+            result += 4 * calculate_function_and_weight_product(left_border + ((2 * i - 1) * length), function_number)
+            result += 2 * calculate_function_and_weight_product(left_border + ((2 * i) * length), function_number)
+            i += 1
+        #
+        # for i in range(1, int(subrange / 2)):
+        #     result += 4 * calculate_function_and_weight_product(left_border + (2 * i - 1) * length, function_number)
+        #     result += 2 * calculate_function_and_weight_product(left_border + (2 * i) * length, function_number)
+
         result *= length / 3
 
     return result

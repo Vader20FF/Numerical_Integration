@@ -9,15 +9,28 @@ def get_function_formula(function_number):
     :return: formula of the given function number
     """
     x = sp.Symbol('x')
+    # if function_number == 1:
+    #     return x - 3
+    # elif function_number == 2:
+    #     return get_polynomial_value([2, 1, -3, 7], x)
+    # elif function_number == 3:
+    #     return 4 * sp.cos(x) + 6 * sp.sin(x)
+    # elif function_number == 4:
+    #     return abs(sp.sin(x + 2) - 1.6)
+    # else:
+    #     print("""
+    # Przekazano nieprawidlowa wartosc numeru wzoru funkcji do metody "wartoscFunkcji" """)
+    #     return None
+
     if function_number == 1:
-        return x - 3
+        return 2*x + 1
     elif function_number == 2:
-        return get_polynomial_value([2, 1, -3, 7], x)
+        return get_polynomial_value([3, 2, 5, 7], x)
     elif function_number == 3:
-        return 4 * sp.cos(x) + 6 * sp.sin(x)
+        return sp.sin(x)
     elif function_number == 4:
-        return abs(sp.sin(x + 2) - 1.6)
+        return sp.sin((2*x)+1)
     else:
         print("""
-    Przekazano nieprawidlowa wartosc numeru wzoru funkcji do metody "wartoscFunkcji" """)
+        Przekazano nieprawidlowa wartosc numeru wzoru funkcji do metody "wartoscFunkcji" """)
         return None
